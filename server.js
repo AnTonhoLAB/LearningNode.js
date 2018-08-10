@@ -18,9 +18,18 @@ const route = router.get('/', (requestAnimationFrame, res, next)=>{
     });
 });
 
+const routeVersion = router.get('/version', (requestAnimationFrame, res, next)=>{
+    res.status(200).send({
+        title: "Learning Node",
+        version: "0.0.9"
+    });
+});
+
 app.use('/', route);
+app.use('/version', route);
 
 server.listen(port);
+server.on('error', onError)
 
 function normalizePort(val){
     const port = parseInt(val, 10);
@@ -33,5 +42,26 @@ function normalizePort(val){
         return port;
     }
 
-    return false
+    return false 
+}
+
+function onError(error){
+    if(error.syscall !== 'listen'){
+        throw error;
+    }
+
+    const bind = typeof port === 'string'? 'pipe ' + port : 'port ' + port;
+
+    switch (error.code) {
+        case 'EACCES':
+            console.error(bind + ' requires elevated privilages ');
+            process.exit(1);
+            break;
+        case 'EADDRINUSE':
+            console.error(bind+ ' - is already in use');
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    }
 }
