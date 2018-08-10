@@ -19,7 +19,14 @@ const routeVersion = router.get('/version', (requestAnimationFrame, res, next)=>
     });
 });
 
+const create = router.post('/', (req, res, next)=>{
+    res.status(201).send(req.body);
+
+});
+
 app.use('/', route);
 app.use('/version', route);
+
+app.use('/product', create);
 
 module.exports = app;
