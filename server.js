@@ -18,7 +18,15 @@ const route = router.get('/', (requestAnimationFrame, res, next)=>{
     });
 });
 
+const routeVersion = router.get('/version', (requestAnimationFrame, res, next)=>{
+    res.status(200).send({
+        title: "Learning Node",
+        version: "0.0.9"
+    });
+});
+
 app.use('/', route);
+app.use('/version', route);
 
 server.listen(port);
 
@@ -33,5 +41,5 @@ function normalizePort(val){
         return port;
     }
 
-    return false
+    return false 
 }
