@@ -13,17 +13,6 @@ const user = require('./routes/User');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-
-
-const routeVersion = router.get('/', (req, res, next)=>{
-    res.status(200).send({
-        title: "Learning Node",
-        version: "0.0.9"
-    });
-});
-
-
-
 app.use('/', index);
 app.use('/user', user);
 
