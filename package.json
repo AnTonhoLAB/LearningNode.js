@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Crowlleey/LearningNode.js#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "debug": "^3.1.0",
     "express": "^4.16.3",
     "http": "0.0.0"
